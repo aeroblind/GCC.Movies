@@ -1,0 +1,43 @@
+{
+  "name": "gcc.react.spotify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run devServer",
+    "build": "webpack --config webpack.config.js",
+    "devServer": "webpack-dev-server --config webpack.config.js --open --hot --inline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeroblind/GCC.React.Spotify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeroblind/GCC.React.Spotify/issues"
+  },
+  "homepage": "https://github.com/aeroblind/GCC.React.Spotify#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^6.2.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
