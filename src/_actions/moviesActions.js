@@ -19,9 +19,8 @@ export function searchMovies(searchStr) {
   return async function (dispatch) {
     try{
       const response = await omdbApi.search(searchStr)
-      dispatch(getMoviesSuccessful(response.data.Search));
+      dispatch(getMoviesSuccessful(response.data.Search || []));
     } catch  (error) {
-      console.log(`error ${error}`);
       dispatch(getMoviesFailed());
     }
   };

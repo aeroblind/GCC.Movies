@@ -7,7 +7,6 @@ const apiKey = config.apiKey;
 
 function search(searchStr) {
   const searchUri = encodeURIComponent(searchStr);
-  console.log(searchUri);
   return axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchUri}`);
 }
 
