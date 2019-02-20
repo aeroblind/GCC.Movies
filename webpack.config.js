@@ -37,8 +37,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env' : {
-        'clientID': JSON.stringify(process.env.CLIENTID),
-        'clientSecret': JSON.stringify(process.env.CLIENTSECRET)
+        'apiKey': JSON.stringify(process.env.APIKEY),
       }
     })
   ],
