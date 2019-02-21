@@ -43,22 +43,29 @@
     ```
     import * as OmdbApi from '../../_api/omdbApi
     ```
+1.  In **Movies.jsx**, _./src/pages/movies_, add the following function:
+    ```
+    async searchMoviesWithString(searchStr) {
+      try {
+        const response = await OmdbApi.search(searchStr)
+        this.setState({
+          movies: response.data.Search || []
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    ```
 1.  In **Movies.jsx**, _./src/pages/movies_, add the following component lifecycle function:
     ```
     componentDidMount() {
+      this.searchMoviesWithString(this.state.searchStr);
     }
     ```
     Learn more about component lifecycle functions [here](https://reactjs.org/docs/react-component.html)
-1.  Add the following code to the **componentDidMount** function:
-    ```
-    try {
-      const movies = await OmdbApi.search("Die Hard")
-    } catch (error) {
-      console.error(error);
-    }
-    ```
-1.  Refresh browser and review browser console.
-1.  Add `async` before **componentDidMount**
+1.  The browser should load images on load.
+1.  Try using the search button?  Does it work?  Why not? A: It's using a form!  We must prevent its default behavior.
+1.  Uncomment `e.preventDefault();` and try again.
   
     
     
