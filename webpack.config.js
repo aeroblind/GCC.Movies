@@ -9,7 +9,7 @@ module.exports = {
   entry: ['./src/App'],
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    filename: "bundle.js", //"bundle.[hash].js",
+    filename: "bundle.[hash].js",
     publicPath: '/'
   },
   module: {
@@ -31,7 +31,6 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   plugins: [
     new clearWebpackPlugin(['dist']),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/templates/index.html'
     }),

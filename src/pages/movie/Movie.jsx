@@ -4,7 +4,7 @@ import wrapper from '../../../util/wrapper';
 
 import './Movie.css';
 
-class Dashboard extends Component {
+class Movie extends Component {
   constructor(props) {
     super(props);
 
@@ -52,4 +52,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default Movie;

@@ -1,16 +1,7 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onSearch = props.onSearch;
-    this.state = {
-      searchStr: ''
-    }
-  }
-
+class Header extends PureComponent {
   render() {
     const { searchStr } = this.setState;
     return (

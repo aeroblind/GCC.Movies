@@ -1,20 +1,20 @@
 
-import axios from 'axios';
-import config from '../../config';
+// import axios from 'axios';
+// import config from '../../config';
 
-const baseUrl = config.baseUrl;
-const apiKey = config.apiKey;
+// const baseUrl = config.baseUrl;
+// const apiKey = config.apiKey;
 
-function search(searchStr) {
-  const searchUri = encodeURIComponent(searchStr);
-  return axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchUri}`);
-}
+// function search(searchStr) {
+//   const searchUri = encodeURIComponent(searchStr);
+//   return axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchUri}`);
+// }
 
-function searchByImdbId(id) {
-  return axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`);
-}
+// function searchByImdbId(id) {
+//   return axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`);
+// }
 
-export {
-  search,
-  searchByImdbId
-}
+// export {
+//   search,
+//   searchByImdbId
+// }

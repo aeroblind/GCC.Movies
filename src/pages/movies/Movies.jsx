@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import * as OmdbApi from '../../_api/omdbApi';
+// import * as OmdbApi from '../../_api/omdbApi';
 import wrapper from '../../../util/wrapper';
 import MovieCard from '../../components/movieCard';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import * as moviesActions from '../../_actions/moviesActions';
-import Car from '../../models/Car';
 
-import './Dashboard.css';
+import './Movies.css';
 
-class Dashboard extends Component {
+class Movies extends Component {
   constructor(props) {
     super(props);
 
@@ -19,23 +18,21 @@ class Dashboard extends Component {
     this.history = props.history;
 
     this.state = {
-      searchStr: ''
+      movies: [],
+      searchStr: 'Die Hard'
     }
   }
 
-  componentDidMount() {
-    this.props.search("Die Hard");
-  }
-
   handleButtonClick(e, id) {
-    this.history.push(`/${id}`);
+    // this.history.push(`/${id}`);
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const { search } = this.props;
-    const { searchStr } = this.state;
-    search(searchStr);
+    //  e.preventDefault();
+    this.searchMoviesWithString(this.state.searchStr)
+    // const { search } = this.props;
+    // const { searchStr } = this.state;
+    // search(searchStr);
   }
 
   handleSearchInput(e){
@@ -45,11 +42,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { movies } = (this.props);
+    const { movies } = this.state; //(this.props);
     return (
       <div>
         <form className="form-inline my-2 my-lg-0" onSubmit={this.handleSubmit}>
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={this.handleSearchInput}/>
+          <input className="form-control mr-sm-2" type="search" placeholder="Die Hard..." aria-label="Search" onChange={this.handleSearchInput}/>
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div className="movie-list">
@@ -62,16 +59,16 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    movies: state.movies.movies
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     movies: state.movies.movies
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    search: (searchStr) => dispatch(moviesActions.searchMovies(searchStr)),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     search: (searchStr) => dispatch(moviesActions.searchMovies(searchStr)),
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default Movies //connect(mapStateToProps, mapDispatchToProps)(Movies);

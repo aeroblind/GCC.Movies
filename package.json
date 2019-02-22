@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/aeroblind/GCC.React.Spotify#readme",
   "dependencies": {
-    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^6.2.0",
     "jquery": "^3.3.1",
@@ -28,7 +27,6 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.1",
-    "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.3.0"
