@@ -66,6 +66,25 @@
 1.  The browser should load images on load.
 1.  Try using the search button?  Does it work?  Why not? A: It's using a form!  We must prevent its default behavior.
 1.  Uncomment `e.preventDefault();` and try again.
-  
+1.  Now, let's route to the movie details!
+
+## Client-Side Routing with React Router v4
+
+1.  Install React Router. `npm i --save react-router-dom`
+1.  Uncomment code in **AppRoutes.jsx**, _./src/routes.
+1.  In **App.jsx**, _./src_, remove the `<Main></Main>`, uncomment the follow code:
+    ```
+     <BrowserRouter>
+       <AppRoutes/>
+     </BrowserRouter>,
+    ```
+1.  In **Main.jsx**, _./src/layouts/main_, remove `<Movies></Movies>`, uncomment the follow code:
+    ```
+     <BrowserRouter>
+       <AppRoutes/>
+     </BrowserRouter>,
+
+
+
     
     
