@@ -37,13 +37,19 @@
 ## AJAX in React
 
 1.  Start app. `npm start`.
+
 1.  Install axios. `npm i --save axios`
+
 1.  Uncomment code found in `./src/_api/omdbApi.js`.
+
 1.  In **Movies.jsx**, _./src/pages/movies_, uncomment the **omdb.js** import line.
+
     ```
     import * as OmdbApi from '../../_api/omdbApi
     ```
+    
 1.  In **Movies.jsx**, _./src/pages/movies_, add the following function:
+
     ```
     async searchMoviesWithString(searchStr) {
       try {
@@ -56,39 +62,58 @@
       }
     }
     ```
+    
 1.  In **Movies.jsx**, _./src/pages/movies_, add the following component lifecycle function:
+
     ```
     componentDidMount() {
       this.searchMoviesWithString(this.state.searchStr);
     }
     ```
+    
     Learn more about component lifecycle functions [here](https://reactjs.org/docs/react-component.html)
+    
 1.  The browser should load images on load.
+
 1.  Try using the search button?  Does it work?  Why not? A: It's using a form!  We must prevent its default behavior.
+
 1.  Uncomment `e.preventDefault();` and try again.
+
 1.  Now, let's route to the movie details!
 
 ## Client-Side Routing with React Router v4
 
 1.  Install React Router. `npm i --save react-router-dom`
+
 1.  Uncomment code in **AppRoutes.jsx**, _./src/routes.
+
 1.  In **App.jsx**, _./src_, remove the `<Main></Main>`, uncomment the follow code:
+
     ```
      <BrowserRouter>
        <AppRoutes/>
      </BrowserRouter>,
     ```
+    
 1.  In **Main.jsx**, _./src/layouts/main_, remove `<Movies></Movies>`, uncomment the follow code:
+
     ```
     {/* {children} */}
     ```
+    
 1.  Look at `{children}`.  What is happening here?
+
 1.  In **Movies.jsx**, _./src/pages/movies, uncomment the follow code in the handleButtonClick function:
+
     ```
     this.history.push(`/${id}`);
     ```
+    
 1.  This is much, much more to [React Router v4](https://reacttraining.com/react-router/web/guides/philosophy).  
 
+## Prop Types
+
+1. How do we ensure/test expect props are being passed to a component.  Simple, use the prop-types library!
 
 
 
