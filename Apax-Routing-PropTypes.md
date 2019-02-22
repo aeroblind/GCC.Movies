@@ -80,9 +80,15 @@
     ```
 1.  In **Main.jsx**, _./src/layouts/main_, remove `<Movies></Movies>`, uncomment the follow code:
     ```
-     <BrowserRouter>
-       <AppRoutes/>
-     </BrowserRouter>,
+    {/* {children} */}
+    ```
+1.  Look at `{children}`.  What is happening here?
+1.  In **Movies.jsx**, _./src/pages/movies, uncomment the follow code in the handleButtonClick function:
+    ```
+    this.history.push(`/${id}`);
+    ```
+1.  This is much, much more to [React Router v4](https://reacttraining.com/react-router/web/guides/philosophy).  
+
 
 
 
