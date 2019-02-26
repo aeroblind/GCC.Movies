@@ -113,7 +113,31 @@
 
 ## Prop Types
 
-1. How do we ensure/test expect props are being passed to a component.  Simple, use the prop-types library!
+1.  How do we ensure/test expect props are being passed to a component.  Simple, use the prop-types library!
+
+1.  Install.  ```npm i prop-types --save```
+
+1.  In our app, the Movies.jsx component requires a history prop in order to navigate to the movie component.  Let's create     a prop-type rule to ensure the prop is available during development. 
+    _Note: history is available to the movie component because **AppRoutes.jsx** is wrapped in **<BrowserRouter>**, an       higher order component made available by react router.  
+  
+1.  Import. In **Movies.jsx**, ./src/pages/movies, add the following import statement:
+    ```
+    import { object } from 'prop-types';
+    ```
+    
+1.  Add the following code under the Movies class code block but above the _export default_ statement:
+    ```
+    Movies.propTypes = {
+    history: object.isRequired
+    }
+    ```
+1.  Save and inspect the browser console.  You should not see any errors.
+
+1.  What happens when we change the name of the history prop type?  What do you see in the browser console?
+
+1. When building reuseable components, using prop-types is great way to ensure downstream users use your components as you intended.   
+
+
 
 
 
