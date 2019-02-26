@@ -181,7 +181,7 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
         export default rootReducer;
         ```
         
-1.  Create the store.
+1.  Create the Store.
 
     1.  In the **store** directory, create a new file, **configureStore.js**
     
@@ -225,6 +225,73 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
           }
         });
         ```
+        
+## Connect Redux to Components
+
+1.  In **App.jsx**, import ```import configureStore from './_store/configureStore';```
+    
+2.  Replace all the code under the bootstrap imports with:
+    
+    ```
+    const initialState = {};
+    const store = configureStore(initialState);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const target = document.getElementById('root');
+      if (target) {
+        ReactDOM.render(
+          <Provider store={store}>
+            <BrowserRouter>
+              <AppRoutes/>
+            </BrowserRouter>,
+          </Provider>,
+          target,
+        );
+      } else {
+        console.warn('tried to load React and failed :(');
+      }
+    });
+    ```
+    
+1.  In **Movies.jsx**, import ```import { connect } from 'react-redux';```
+
+1.  In **Movies.jsx**, replace the export statement with:
+
+    ```
+    export default connect(mapStateToProps, mapDispatchToProps)(Movies);
+    ```
+    
+1.  In **Movies.jsx**, add the follow function above the export statement:
+    
+    ```
+    function mapStateToProps(state) {
+      return {
+        movies: state.movies.movies
+      };
+    }
+
+    function mapDispatchToProps(dispatch) {
+      return {
+        search: (searchStr) => dispatch(moviesActions.searchMovies(searchStr)),
+      };
+    }
+    ```
+  
+1.  In **Movies.jsx**, replace the asyc searchMoviesWithString with:
+
+    ```
+    searchMoviesWithString(searchStr) {
+      const { search } = this.props;
+      search(searchStr);
+    }
+    ```
+1.  In **Movies.jsx**, in the render function change movies declaration to:
+
+    ```
+    const { movies } = this.props;
+    ```
+    
+1.  Done....with the Movies Component.  Can you update the Movie Component on your own? 
         
       
       
