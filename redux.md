@@ -88,7 +88,7 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
 
 1.  Install react-redux.```npm i --save react-redux```
 
-1.  Install redux-thunk. ```npm i --save redux-thunk```
+1.  Install redux-thunk. ```npm i --save redux-thunk``` (Thunks!!)
 
 1.  Create the follow directories in the _root_ directory:
     - _actions
@@ -201,31 +201,7 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
           );
         }
         ```
-        
-    2.  In **App.jsx**, import ```import configureStore from './_store/configureStore';```
-    
-    3.  Replace all the code under the bootstrap imports with:
-        ```
-        const initialState = {};
-        const store = configureStore(initialState);
-
-        document.addEventListener('DOMContentLoaded', () => {
-          const target = document.getElementById('root');
-          if (target) {
-            ReactDOM.render(
-              <Provider store={store}>
-                <BrowserRouter>
-                  <AppRoutes/>
-                </BrowserRouter>,
-              </Provider>,
-              target,
-            );
-          } else {
-            console.warn('tried to load React and failed :(');
-          }
-        });
-        ```
-        
+               
 ## Connect Redux to Components
 
 1.  In **App.jsx**, import ```import configureStore from './_store/configureStore';```
