@@ -72,3 +72,161 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
   - We don't mutate the state. We create a copy with Object.assign(). Object.assign(state, { visibilityFilter: action.filter }) is also wrong: it will mutate the first argument. You must supply an empty object as the first parameter. You can also enable the object spread operator proposal to write { ...state, ...newState } instead.
 
   - We return the previous state in the default case. It's important to return the previous state for any unknown action.
+
+- **Store:**
+  The Store is the object that brings them together. The store has the following responsibilities:
+
+    - Holds application state;
+    - Allows access to state via getState();
+    - Allows state to be updated via dispatch(action);
+    - Registers listeners via subscribe(listener);
+    - Handles unregistering of listeners via the function returned by subscribe(listener).
+    
+## Setup: Boilerplate, Boilerplate and more Boilerplate!
+
+1.  Install redux.  ```npm i --save redux```
+
+1.  Install react-redux.```npm i --save react-redux```
+
+1.  Install redux-thunk. ```npm i --save redux-thunk```
+
+1.  Create the follow directories in the _root_ directory:
+    - _actions
+    - _reducers
+    - _store
+
+1.  Create Actions.
+
+    1.  Create an Action Type file.
+
+        - In the **action** directory, create a new file called **actionTypes.js.
+
+        - Add the following code in the new file:
+
+          ```
+          export const GET_MOVIES_SUCCESSFUL = 'GET_MOVIES_SUCCESSFUL';
+          export const GET_MOVIES_FAILED = 'GET_MOVIES_FAILED';
+          ```
+          
+    1.  Create an Action file.
+
+        - In the **action** directory, create a new file called **moviesActions.js.
+
+        - Add the following code in the new file:
+
+          ```
+          import { GET_MOVIES_SUCCESSFUL, GET_MOVIES_FAILED } from './actionTypes';
+          import * as omdbApi from '../_api/omdbApi';
+
+          export function getMoviesSuccessful(movies) {
+            return {
+              type: GET_MOVIES_SUCCESSFUL,
+              movies,
+            };
+          }
+
+          export function getMoviesFailed() {
+            return {
+              type: GET_MOVIES_FAILED,
+              movies: [],
+            };
+          }
+
+          export function searchMovies(searchStr) {
+            return async function (dispatch) {
+              try{
+                const response = await omdbApi.search(searchStr)
+                dispatch(getMoviesSuccessful(response.data.Search || []));
+              } catch  (error) {
+                dispatch(getMoviesFailed());
+              }
+            };
+          }
+          ```
+
+1.  Create Reducers
+
+    1.  In the **reducers** directory, create a new file named **moviesReducers.js**.
+    
+    1.  Add the following code to the new file:
+    
+        ```
+        import * as actionTypes from '../_actions/actionTypes';
+
+        export default function moviesReducer(state = { movies:[] }, action) {
+          switch (action.type) {
+            case actionTypes.GET_MOVIES_SUCCESSFUL:
+              return Object.assign({}, state, {
+                movies: action.movies,
+              });
+
+            default:
+              return state;
+          }
+        }
+        ```
+        
+    1.  In the **reducers** directory, create a new file named **index.js**.
+    
+    1.  Add the following code to the new file:
+    
+        ```
+        import { combineReducers } from 'redux';
+        import movies from './moviesReducers';
+
+        const rootReducer = combineReducers({
+          movies
+        });
+
+        export default rootReducer;
+        ```
+        
+1.  Create the store.
+
+    1.  In the **store** directory, create a new file, **configureStore.js**
+    
+        - Add the following code to the new file:
+        ```
+        import { createStore, applyMiddleware } from 'redux';
+        import thunk from 'redux-thunk';
+        import rootReducer from '../_reducers';
+
+        export default function configureStore(initialState) {
+          return createStore(
+            rootReducer,
+            initialState,
+            applyMiddleware(
+              thunk
+            ),
+          );
+        }
+        ```
+        
+    2.  In **App.jsx**, import ```import configureStore from './_store/configureStore';```
+    
+    3.  Replace all the code under the bootstrap imports with:
+        ```
+        const initialState = {};
+        const store = configureStore(initialState);
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const target = document.getElementById('root');
+          if (target) {
+            ReactDOM.render(
+              <Provider store={store}>
+                <BrowserRouter>
+                  <AppRoutes/>
+                </BrowserRouter>,
+              </Provider>,
+              target,
+            );
+          } else {
+            console.warn('tried to load React and failed :(');
+          }
+        });
+        ```
+        
+      
+      
+        
+  
