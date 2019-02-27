@@ -51,9 +51,7 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
   
   The reducer is a pure function that takes the previous state and an action, and returns the next state.
   
-  Things you should **NEVER**
-  
-  do inside a reducer:
+  Things you should **NEVER** do inside a reducer:
 
     - Mutate its arguments;
     - Perform side effects like API calls and routing transitions;
