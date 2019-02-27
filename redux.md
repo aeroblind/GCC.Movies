@@ -2,6 +2,14 @@
 
 - Please refer to the link above to learn about Redux  There is no way I can cover redux in depth in this session.
 
+## Initial Setup
+
+1.  Clone repo. ```git@github.com:aeroblind/GCC.Movies.git```
+2.  Switch to `redux` branch.
+
+    - ```git fetch```
+    - ```git checkout redux```
+
 ## What is Redux?
 
 That's easy, it's a predictable state container for JavaScript apps.  Ok, what does that mean?  Let's find out....
@@ -20,7 +28,7 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
     movies,
   }
   ```
-  _GET_MOVIES_SUCCESSFUL_ is the **action type** and _movies_ is the **payload**.
+  Note: _GET_MOVIES_SUCCESSFUL_ is the **action type** and _movies_ is the **payload**.
   
 - **Action Creators:**
 
