@@ -239,7 +239,10 @@ That's easy, it's a predictable state container for JavaScript apps.  Ok, what d
     });
     ```
     
-1.  In **Movies.jsx**, import ```import { connect } from 'react-redux';```
+1.  In **Movies.jsx**, import the following:
+    
+    ```import { connect } from 'react-redux';```
+    ```import * as moviesActions from '../../_actions/movieActions';```
 
 1.  In **Movies.jsx**, replace the export statement with:
 
