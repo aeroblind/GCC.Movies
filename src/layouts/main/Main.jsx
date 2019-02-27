@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../../components/header';
-import Movies from '../../pages/movies';
 
 import './Main.css';
 
@@ -18,8 +17,7 @@ class Main extends Component {
         <div className="container">
           <div className="row">
             <div className="page-container">
-              <Movies></Movies>
-              {/* {children} */}
+              {children}
             </div>
           </div>
         </div>

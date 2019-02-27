@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import * as OmdbApi from '../../_api/omdbApi';
-import wrapper from '../../../util/wrapper';
+import * as OmdbApi from '../../_api/omdbApi';
 import MovieCard from '../../components/movieCard';
-// import { connect } from 'react-redux';
-import * as moviesActions from '../../_actions/moviesActions';
 
 import './Movies.css';
 
@@ -23,16 +20,28 @@ class Movies extends Component {
     }
   }
 
+  componentDidMount() {
+    this.searchMoviesWithString(this.state.searchStr);
+  }
+  
+  async searchMoviesWithString(searchStr) {
+    try {
+      const response = await OmdbApi.search(searchStr)
+      this.setState({
+        movies: response.data.Search || []
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   handleButtonClick(e, id) {
-    // this.history.push(`/${id}`);
+    this.history.push(`/${id}`);
   }
 
   handleSubmit(e) {
-    //  e.preventDefault();
+    e.preventDefault();
     this.searchMoviesWithString(this.state.searchStr)
-    // const { search } = this.props;
-    // const { searchStr } = this.state;
-    // search(searchStr);
   }
 
   handleSearchInput(e){
@@ -42,7 +51,7 @@ class Movies extends Component {
   }
 
   render() {
-    const { movies } = this.state; //(this.props);
+    const { movies } = this.state;
     return (
       <div>
         <form className="form-inline my-2 my-lg-0" onSubmit={this.handleSubmit}>
@@ -59,16 +68,4 @@ class Movies extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     movies: state.movies.movies
-//   };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     search: (searchStr) => dispatch(moviesActions.searchMovies(searchStr)),
-//   };
-// }
-
-export default Movies //connect(mapStateToProps, mapDispatchToProps)(Movies);
+export default Movies 

@@ -30,7 +30,6 @@ class Movie extends Component {
 
   render() {
     const { movie } = this.state;
-    console.log(movie);
     return (
       <div className="movie-container">
         <div className="movie-img">
@@ -42,7 +41,6 @@ class Movie extends Component {
           <div>
             <h5>Actors</h5>
             {movie.Actors && movie.Actors.split(',').map((actor, index) => {
-              console.log(actor);
               return <div key={index}>{actor}</div>
             })}
           </div>
